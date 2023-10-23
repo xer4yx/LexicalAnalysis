@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int a = new int;
+    int b = 2;
+    int c = 3;
+    int d = a + b + c;
+
+    string name = "me";
+    char ch = 'A';
+
+    cout << "\n";
+
+    cout << d;
+    return 0;
+}
