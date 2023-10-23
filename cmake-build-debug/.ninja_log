@@ -1,7 +1,7 @@
 # ninja log v5
 9	1401	7197653081048574	CMakeFiles/LexicalAnalysis.dir/main.cpp.obj	d44acbaff1829ee9
-1	177	7197653788727421	build.ninja	2e5193cfa5573351
+1	183	7197656907557539	build.ninja	2e5193cfa5573351
 20	4727	7197653114142585	CMakeFiles/LexicalAnalysis.dir/testcases/main.cpp.obj	55ef41e50b0b9aca
-720	866	7197611599814361	LexicalAnalysis.exe	af75cbf54197e1f3
-1	183	7197653788727421	build.ninja	2e5193cfa5573351
 4	165	7197653790694776	LexicalAnalysis.exe	af75cbf54197e1f3
+6	674	7197667713648995	CMakeFiles/LexicalAnalysis.dir/main.cpp.obj	d44acbaff1829ee9
+675	805	7197667714925520	LexicalAnalysis.exe	af75cbf54197e1f3

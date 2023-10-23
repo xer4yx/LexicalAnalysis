@@ -37,6 +37,10 @@ int main()
     {
         string line;
         getline(file, line);
+        if (line.find("//") != string::npos)
+        {
+            line = line.substr(0, line.find("//"));
+        }
         test += line + "\n";
     }
 
@@ -87,11 +91,35 @@ int main()
     vector<string> foundKeywords;
     vector<string> foundIdentifiers;
     vector<string> foundConstants;
-    string finaltok = "";
+
+    bool inside_multiline_comment = false;
 
     for (auto tok : tokens)
     {
         int index = 0;
+
+        // If the token starts a multi-line comment
+        if (!inside_multiline_comment && tok.find("/*") != string::npos) {
+            inside_multiline_comment = true;
+
+            // If the token also ends the multi-line comment in the same token (like /* comment */)
+            if (tok.find("*/") != string::npos) {
+                inside_multiline_comment = false;
+            }
+
+            continue; // move to the next token without processing this one
+        }
+
+        // If we're inside a multi-line comment and this token ends it
+        if (inside_multiline_comment && tok.find("*/") != string::npos) {
+            inside_multiline_comment = false;
+            continue; // move to the next token
+        }
+
+        // If we're inside a multi-line comment but the token doesn't end it
+        if (inside_multiline_comment) {
+            continue; // simply skip the token
+        }
 
         if (is_string_literal(tok))
         {
@@ -141,8 +169,7 @@ int main()
         cout << "Keywords: " << foundKeywords.size() << endl;
         cout << "Identifiers: " << foundIdentifiers.size() << endl;
         cout << "Constants: " << foundConstants.size() << endl;
-        cout << "-----------------\n"
-             << endl;
+        cout << "-----------------\n" << endl;
     }
 
     cout << "---- SUMMARY ----" << endl;
