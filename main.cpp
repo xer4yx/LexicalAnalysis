@@ -37,6 +37,10 @@ int main()
     {
         string line;
         getline(file, line);
+        if (line.find("//") != string::npos)
+        {
+            line = line.substr(0, line.find("//"));
+        }
         test += line + "\n";
     }
 
@@ -115,11 +119,6 @@ int main()
         // If we're inside a multi-line comment but the token doesn't end it
         if (inside_multiline_comment) {
             continue; // simply skip the token
-        }
-
-        // If the token starts a single-line comment
-        if (tok.find("//") != string::npos) {
-            break; // discard this token and all following tokens in the same line
         }
 
         if (is_string_literal(tok))
